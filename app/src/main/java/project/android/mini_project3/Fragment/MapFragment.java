@@ -193,7 +193,7 @@ public class MapFragment extends Fragment {
         @Override
         public void onMarkerDragEnd(Marker marker) {
             for (Item item : itemList) {
-                if (item.getMarker().equals(marker)) { //현재 클릭한 InfoWindow의 마커를 itemList 의 item 가 갖고 있는 마커와 비교
+                if (item.getMarker().equals(marker)) {
                     changedItem = item;
                     updateItemId = changedItem.get_id();
                     break;

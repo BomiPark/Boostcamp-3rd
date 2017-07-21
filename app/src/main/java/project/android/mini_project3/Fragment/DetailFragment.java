@@ -146,7 +146,7 @@ public class DetailFragment extends Fragment {
         }
 
         if (addressList == null) {
-            latlng = new LatLng(0, 0);
+            latlng = new LatLng(37.4015984, 127.1087813);
         }
 
         for (Address address : addressList) {

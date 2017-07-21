@@ -10,7 +10,7 @@ import com.google.android.gms.maps.model.Marker;
  * Created by qkrqh on 2017-07-17.
  */
 
-public class Item implements Parcelable{
+public class Item {
 
     private int _id = -1;
     private String name;
@@ -20,43 +20,6 @@ public class Item implements Parcelable{
     private Double latitude;
     private Double longitude;
     private Marker marker;
-
-    protected Item(Parcel in) {
-        _id = in.readInt();
-        name = in.readString();
-        address = in.readString();
-        phone = in.readString();
-        explain = in.readString();
-        latitude = in.readDouble();
-        longitude = in.readDouble();
-    }
-    public static final Creator<Item> CREATOR = new Creator<Item>() {
-        @Override
-        public Item createFromParcel(Parcel in) {
-            return new Item(in);
-        }
-
-        @Override
-        public Item[] newArray(int size) {
-            return new Item[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(_id);
-        parcel.writeString(name);
-        parcel.writeString(address);
-        parcel.writeString(phone);
-        parcel.writeString(explain);
-        parcel.writeDouble(latitude);
-        parcel.writeDouble(longitude);
-    }
 
     public Item(){}
 
@@ -80,7 +43,6 @@ public class Item implements Parcelable{
 
 
     public Item(String name, String phone, String address, String explain, Double latitude, Double longitude) {
-        this._id = 0;
         this.name = name;
         this.address = address;
         this.phone = phone;
