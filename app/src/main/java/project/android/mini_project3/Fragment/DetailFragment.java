@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.util.List;
 
 import project.android.mini_project3.Listener.FragmentChangeListener;
+import project.android.mini_project3.Listener.LocationListener;
 import project.android.mini_project3.Model.Item;
 import project.android.mini_project3.Model.ItemLab;
 import project.android.mini_project3.R;
@@ -48,6 +49,8 @@ public class DetailFragment extends Fragment {
     public static final int detailToMap = 1;
 
     FragmentChangeListener listener;
+
+    LocationListener loc;
 
     static View view;
 
@@ -82,6 +85,8 @@ public class DetailFragment extends Fragment {
         counts = (TextView)view.findViewById(R.id.counts);
 
         saveBtn = (Button)view.findViewById(R.id.saveBtn);
+
+        loc = new LocationListener(getActivity());
 
         saveBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -146,7 +151,7 @@ public class DetailFragment extends Fragment {
         }
 
         if (addressList == null) {
-            latlng = new LatLng(37.4015984, 127.1087813);
+            return null;
         }
 
         for (Address address : addressList) {
@@ -162,7 +167,7 @@ public class DetailFragment extends Fragment {
         if(setLatlng() != null)
             latlng = new LatLng(setLatlng().latitude, setLatlng().longitude);
         else
-            latlng = new LatLng(0,0);
+            latlng = loc.getLocation();
 
         ItemLab itemLab = ItemLab.get(getActivity());
 
